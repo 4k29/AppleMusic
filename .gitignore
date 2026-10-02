@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.local
+.env*
+!.env.example
+*.csv
+*.zip
+Apple Music*/
+.DS_Store
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
