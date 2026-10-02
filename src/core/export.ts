@@ -1,0 +1,2 @@
+export const csvCell=(v:string|number)=>{const s=String(v);const safe=/^[=+\-@]/.test(s)?`'${s}`:s;return `"${safe.replaceAll('"','""')}"`};
+export function downloadCsv(name:string,rows:{label:string;value:number}[]){const body='\uFEFF項目,値\r\n'+rows.map(r=>`${csvCell(r.label)},${r.value}`).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([body],{type:'text/csv;charset=utf-8'}));a.download=name;a.click();URL.revokeObjectURL(a.href)}

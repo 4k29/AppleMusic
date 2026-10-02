@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f3ef" />
+    <meta name="description" content="Apple Musicの利用履歴を端末内だけで読み込み、ランキングや再生傾向を可視化します。" />
+    <meta property="og:title" content="Music Lens — 音楽の聴き方を振り返る" />
+    <meta property="og:description" content="音楽の履歴を外へ送らず、ブラウザ内で分析。" />
+    <meta property="og:type" content="website" />
+    <title>Music Lens | Apple Music利用履歴分析</title>
+    <script>
+      (() => {
+        let saved = null;
+        try { saved = localStorage.getItem('music-lens-theme'); } catch {}
+        const theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#171717' : '#f4f3ef';
+      })();
+    </script>
+  </head>
+  <body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+</html>
